@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:latest 
+    container_name: mongodb_container
+    ports:
+      - "27017:27017" # Mapeia a porta 27017 do container para a máquina local
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin # Usuário root
+      MONGO_INITDB_ROOT_PASSWORD: localhost-debug # Senha do usuário root
+    volumes:
+      - mongodb_data:/data/db 
+
+volumes:
+  mongodb_data:
