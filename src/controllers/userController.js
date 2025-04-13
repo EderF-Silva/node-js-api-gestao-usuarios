@@ -6,6 +6,7 @@ const validateEmail = require("../utils/validate");
 const getUsers = async (req, res) => {
   try {
     const users = await User.find().select("-password");
+    res.set("Content-Range", users.length);
     res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ message: "Erro ao buscar os usuários" });
